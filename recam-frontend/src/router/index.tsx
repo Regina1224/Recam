@@ -1,6 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import LoginPage  from "../pages/Login/LoginPage";
 import RegisterPage from "../pages/Register/RegisterPage";
+import ProtectedRoute from "../ProtectedRoute";
 
 const router = createBrowserRouter([
     {
@@ -14,6 +15,15 @@ const router = createBrowserRouter([
     {
         path: '/register',
         element: <RegisterPage />
+    },
+    {
+        element: <ProtectedRoute />,
+        children: [
+            {
+                path: '/my-order',
+                element: <div>My Order Page</div>
+            }
+        ]
     }
 ])
 
