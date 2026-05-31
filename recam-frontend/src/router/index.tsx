@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import LoginPage  from "../pages/Login/LoginPage";
 import RegisterPage from "../pages/Register/RegisterPage";
 import ProtectedRoute from "../ProtectedRoute";
+import Layout from "../components/Layout";
 
 const router = createBrowserRouter([
     {
@@ -20,8 +21,13 @@ const router = createBrowserRouter([
         element: <ProtectedRoute />,
         children: [
             {
-                path: '/my-order',
-                element: <div>My Order Page</div>
+                element: <Layout />,
+                children: [
+                    {
+                        path: '/my-order',
+                        element: <div></div>
+                    }
+                ]
             }
         ]
     }
