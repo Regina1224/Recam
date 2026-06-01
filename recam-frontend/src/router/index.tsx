@@ -3,6 +3,7 @@ import LoginPage  from "../pages/Login/LoginPage";
 import RegisterPage from "../pages/Register/RegisterPage";
 import ProtectedRoute from "../ProtectedRoute";
 import Layout from "../components/Layout";
+import MyOrderPage from "../pages/MyOrder/MyOrderPage";
 
 const router = createBrowserRouter([
     {
@@ -25,7 +26,7 @@ const router = createBrowserRouter([
                 children: [
                     {
                         path: '/my-order',
-                        element: <div></div>
+                        element: <MyOrderPage />
                     }
                 ]
             }

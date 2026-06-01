@@ -16,7 +16,7 @@ const Layout = () => {
                     <input placeholder="Search My Order" className="border border-gray-300 rounded-lg pl-9 px-4 py-2 text-sm" />
                 </div>
             </header>
-            {/*内容区域 */}
+            {/* 内容区域 */}
             <main>
                 <Outlet />
             </main>
