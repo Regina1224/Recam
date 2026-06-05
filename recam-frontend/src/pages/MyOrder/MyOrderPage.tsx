@@ -3,7 +3,7 @@ import type { Order } from "../../types/order";
 import { Camera, LayoutDashboard, Video, Globe, FileText } from "lucide-react";
 
 {
-  /* 假数据 */
+  /* fack data */
 }
 const mockOrders: Order[] = [
   {
@@ -23,7 +23,7 @@ const mockOrders: Order[] = [
 ];
 
 {
-  /* 四种状态 */
+  /* 2 status */
 }
 const setStateBadgeClass = (state: string) => {
   switch (state) {
@@ -37,7 +37,7 @@ const setStateBadgeClass = (state: string) => {
 };
 
 {
-  /* 不同服务的图标 */
+  /* 4 services logo */
 }
 const getServiceIcon = (service: string) => {
   switch (service) {
@@ -64,23 +64,23 @@ const MyOrderPage = () => {
       : mockOrders.filter((order) => order.orderState === activeFilter);
 
   return (
-    <div className="flex p-6">
-      {/* 左侧边栏 */}
+    <div className="flex p-12">
+      {/* Left part */}
       <aside className="w-48 flex flex-col gap-2 mr-6">
         <button
-          className={`w-full text-center px-4 py-2 rounded-lg outline-none hover:bg-gray-200 transition-colors ${activeFilter === "All" ? "bg-gray-200 font-medium" : ""}`}
+          className={`w-full text-center px-4 py-2 rounded-lg outline-none hover:bg-gray-200 transition-colors cursor-pointer ${activeFilter === "All" ? "bg-gray-200 font-medium" : ""}`}
           onClick={() => setActiveFilter("All")}
         >
           All
         </button>
         <button
-          className={`w-full text-center px-4 py-2 rounded-lg outline-none hover:bg-gray-200 transition-colors ${activeFilter === "Scheduled" ? "bg-gray-200 font-medium" : ""}`}
+          className={`w-full text-center px-4 py-2 rounded-lg outline-none hover:bg-gray-200 transition-colors cursor-pointer ${activeFilter === "Scheduled" ? "bg-gray-200 font-medium" : ""}`}
           onClick={() => setActiveFilter("Scheduled")}
         >
           Scheduled
         </button>
         <button
-          className={`w-full text-center px-4 py-2 rounded-lg outline-none hover:bg-gray-200 transition-colors ${activeFilter === "Delivered" ? "bg-gray-200 font-medium" : ""}`}
+          className={`w-full text-center px-4 py-2 rounded-lg outline-none hover:bg-gray-200 transition-colors cursor-pointer ${activeFilter === "Delivered" ? "bg-gray-200 font-medium" : ""}`}
           onClick={() => setActiveFilter("Delivered")}
         >
           Delivered
@@ -88,20 +88,20 @@ const MyOrderPage = () => {
       </aside>
 
 
-      {/* 右侧订单列 */}
+      {/* Right listing part */}
       <section className="flex-1">
         {filteredOrders.map((order) => (
           <div
             key={order.orderNumber}
             className="relative bg-white rounded-xl p-6 mb-4 shadow-sm border border-transparent hover:border-blue-400 transition-colors cursor-pointer"
           >
-            {/* 标签Scheduled Delivered */}
+            {/* Scheduled or Delivered */}
             <span
               className={`absolute top-4 right-4 px-3 py-1 rounded-md text-sm font-medium ${setStateBadgeClass(order.orderState)}`}
             >
               {order.orderState}
             </span>
-            {/* 顶部订单号和日期 */}
+            {/* Order number and Order date */}
             <div>
               <p className="text-sm text-gray-500">
                 Order # {order.orderNumber}
@@ -112,21 +112,21 @@ const MyOrderPage = () => {
             </div>
             <hr className="my-3 border-gray-100" />
 
-            {/* 中间地址 */}
+            {/* Adress */}
             <p className="text-xl font-semibold py-3">{order.orderAddress}</p>
-            {/* 服务类型 */}
+            {/* Service type */}
             <div>
               {order.serviceType.map((service) => (
                 <span
                   key={service}
-                  className=" bg-gray-100 text-gray-600 px-3 py-1 text-sm mr-2 rounded-md flex items-center inline-flex"
+                  className=" bg-gray-100 text-gray-600 px-3 py-1 text-sm mr-2 rounded-md items-center inline-flex"
                 >
                   {getServiceIcon(service)}
                   {service}
                 </span>
               ))}
             </div>
-            {/* 链接 */}
+            {/* Link */}
             <div className="flex justify-end mt-4">
               <button className="text-sm text-gray-400">
                 View order details »
@@ -138,11 +138,11 @@ const MyOrderPage = () => {
               <div>
                 <hr className="my-3 border-gray-100" />
                 <div className="flex justify-end gap-3 mt-4">
-                  <button className="border border-gray-300 px-4 py-2 rounded-full text-sm flex items-center gap-2">
+                  <button className="border border-gray-300 px-4 py-2 rounded-full text-sm flex items-center gap-2 cursor-pointer">
                     <FileText className="w-4 h-4" />
                     Invoice
                   </button>
-                  <button className="bg-blue-500 text-white px-6 py-2 rounded-full text-sm flex items-center gap-2">
+                  <button className="bg-blue-500 text-white px-6 py-2 rounded-full text-sm flex items-center gap-2 cursor-pointer">
                     <Globe className="w-4 h-4" />
                     Property Website
                   </button>

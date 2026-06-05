@@ -5,8 +5,8 @@ const Layout = () => {
    
     return(
         <div className="min-h-screen bg-gray-50">
-            {/* 顶部区域 */}
-            <header className="bg-white flex justify-between items-center px-8 py-4 shadow-sm">
+            {/* Top area */}
+            <header className="bg-white flex justify-between items-center px-12 py-4 shadow-sm">
                 <div>
                     <p className="text-sm text-gray-500 mb-1">Hi, Jane Doe</p>
                     <h1 className="text-xl font-bold">My Order</h1>
@@ -16,7 +16,7 @@ const Layout = () => {
                     <input placeholder="Search My Order" className="border border-gray-300 rounded-lg pl-9 px-4 py-2 text-sm" />
                 </div>
             </header>
-            {/* 内容区域 */}
+            {/* Content area */}
             <main>
                 <Outlet />
             </main>

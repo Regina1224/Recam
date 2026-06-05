@@ -4,6 +4,7 @@ import RegisterPage from "../pages/Register/RegisterPage";
 import ProtectedRoute from "../ProtectedRoute";
 import Layout from "../components/Layout";
 import MyOrderPage from "../pages/MyOrder/MyOrderPage";
+import PropertyWebsitePage from "../pages/PropertyWebsite/PropertyWebsitePage";
 
 const router = createBrowserRouter([
     {
@@ -29,6 +30,10 @@ const router = createBrowserRouter([
                         element: <MyOrderPage />
                     }
                 ]
+            },
+            {
+                path: '/property-website',
+                element: <PropertyWebsitePage />
             }
         ]
     }
