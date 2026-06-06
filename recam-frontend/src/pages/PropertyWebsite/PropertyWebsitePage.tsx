@@ -1,8 +1,25 @@
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { ChevronLeft, Download, Pencil, BedDouble, Bath, Car, SquareDashedBottom} from "lucide-react";
+import { ChevronLeft, Download, Pencil, BedDouble, Bath, Car, SquareDashedBottom, X} from "lucide-react";
+
+
+{/* fack data */}
+const downloadOptions = [
+    {label: "Print Quality Photography", count: 16},
+    {label: "Web Quality Photography", count: 16},
+    {label: "Floor Plan", count: 1},
+    {label: "Videography", count: 1},
+]
+
 
 const PropertyWebsitePage = () => {
     const navigate = useNavigate()
+
+    const [download, setDownload] = useState<boolean>(false) 
+
+    const [checked, setChecked] = useState<boolean[]>([false,false,false,false])
+    const allChecked = checked.every(c=>c)
+
 
     return(
         <div>
@@ -13,7 +30,9 @@ const PropertyWebsitePage = () => {
                 <button onClick={()=> navigate('/my-order')}>
                     <ChevronLeft className="w-5 h-5" />
                 </button>
-                <button className="bg-blue-400 text-white text-sm px-6 py-2 rounded-full flex items-center gap-2">
+                <button 
+                    className="bg-blue-400 text-white text-sm px-6 py-2 rounded-full flex items-center gap-2"
+                    onClick={()=> setDownload(true)}>
                     <Download className="w-4 h-4" />
                     Download files</button>
                 </div>
@@ -48,7 +67,7 @@ const PropertyWebsitePage = () => {
                         <hr className="border-white/30 w-16 my-6" />
                         {/* 4 logos */}
                         <div className="flex gap-8 text-white text-center">
-                            <div className="flex flex-col items-center gap-2">
+                            <div className="flex flex-col items-center gap-1">
                                 <div className="border border-white/50 rounded-full p-3">
                                     <BedDouble className="w-6 h-6 text-white" />
                                 </div>
@@ -138,8 +157,50 @@ const PropertyWebsitePage = () => {
                     </div>
                 </section>
 
-
             </main>
+
+            {/* Download */}
+            {download && (
+                <div className="fixed top-16 left-4 w-72 bg-white rounded-2xl shadow-xl p-6 z-50">
+                    {/* title + close */}
+                    <div className="relative mb-6">
+                        <button className="absolute right-0 top-0" onClick={()=>setDownload(false)}>
+                            <X className="w-4 h-4" />
+                        </button>
+                        <h3 className="font-bold text-lg text-center">Download</h3>
+                    </div>
+
+
+                    {/* Checkbox */}
+                    <div className="flex flex-col gap-4">
+                    {downloadOptions.map((option, index)=> (
+                        <label key={index} className="flex items-center gap-3">
+                            <input 
+                                type="checkbox" 
+                                checked={checked[index]} 
+                                onChange={()=> {
+                                    const newChecked = [...checked]
+                                    newChecked[index] = !newChecked[index]
+                                    setChecked(newChecked)
+                                }}/>
+                            <span className="text-sm">{option.label}({option.count})</span>
+                        </label>
+                    ))}    
+                    </div>
+                    
+
+                    {/* Bottom */}
+                    <div className="flex items-center justify-between mt-8">
+                        <label className="flex items-center gap-2 text-sm" onClick={()=> setChecked(checked.map(()=> !allChecked))}>
+                            <input type="checkbox" checked={allChecked} onChange={()=>{}} />
+                            Select all
+                        </label>
+                        <button className="bg-blue-400 text-white text-sm px-6 py-2 rounded-full">
+                            Download
+                        </button>
+                    </div>
+                </div>
+            )}
         </div>
 
     )
